@@ -12,6 +12,9 @@ using NECTicket.TicketManagement.Application.Features.Events.Queries.GetEventLis
 using NECTicket.TicketManagement.Application.Features.Events.Queries.GetEventDetail;
 using NECTicket.TicketManagement.Application.Features.Categories.Queries.GetCategoriesList;
 using NECTicket.TicketManagement.Application.Features.Categories.Queries.GetCategoriesListWithEvents;
+using NECTicket.TicketManagement.Application.Features.Events.Commands.CreateEvent;
+using NECTicket.TicketManagement.Application.Features.Events.Commands.UpdateEvent;
+using NECTicket.TicketManagement.Application.Features.Events.Commands.DeleteEvent;
 
 namespace NECTicket.TicketManagement.Application.Profiles
 {
@@ -21,6 +24,9 @@ namespace NECTicket.TicketManagement.Application.Profiles
         { 
             CreateMap<Event, EventListVm>().ReverseMap();
             CreateMap<Event, EventDetailVm>().ReverseMap();
+            CreateMap<Event, CreateEventCommand>().ReverseMap();
+            CreateMap<Event, UpdateEventCommand>().ReverseMap();
+            CreateMap<Event, DeleteEventCommand>().ReverseMap();
             CreateMap<Category, CategoryDto>();
             CreateMap<Category, CategoryListVm>();
             CreateMap<Category, CategoryEventListVm>();
