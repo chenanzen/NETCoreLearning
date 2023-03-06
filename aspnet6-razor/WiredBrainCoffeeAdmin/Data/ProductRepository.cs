@@ -1,4 +1,6 @@
-﻿namespace WiredBrainCoffeeAdmin.Data
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace WiredBrainCoffeeAdmin.Data
 {
     public class ProductRepository : IProductRepository
     {
@@ -10,28 +12,32 @@
 
         public void Add(Product product)
         {
-
-            throw new NotImplementedException();
+            wiredContext.Add(product);
+            wiredContext.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var deleteItem = GetById(id);
+            wiredContext.Products.Remove(deleteItem);
+            wiredContext.SaveChanges();
         }
 
         public List<Product> GetAll()
         {
             return wiredContext.Products.ToList();
+
         }
 
         public Product GetById(int id)
         {
-            throw new NotImplementedException();
+            return wiredContext.Products.FirstOrDefault(x => x.Id == id);
         }
 
         public void Update(Product product)
         {
-            throw new NotImplementedException();
+            wiredContext.Entry(product).State = EntityState.Modified;
+            wiredContext.SaveChanges(true);
         }
     }
 }
